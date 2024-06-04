@@ -21,7 +21,7 @@ export default function index() {
         <div className={styles.title}>
           <span>
             <div className={styles.imageContainer}>
-              <Image fill={true} alt={'image'} src={`/images/background.jpg`} />
+              <Image fill={true} alt={'image'} src={`/images/me-again.jpeg`} />
             </div>
             <h2>Have an idea</h2>
           </span>
@@ -63,7 +63,7 @@ export default function index() {
           <div>
             <span>
               <h3>socials</h3>
-              <Link href=''>
+              <Link href='http'>
                 <Magnetic>
                   <p>Twitter</p>
                 </Magnetic>

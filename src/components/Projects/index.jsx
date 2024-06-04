@@ -6,27 +6,31 @@ import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import Image from 'next/image'
 import Rounded from '../../common/RoundedButton'
+import Link from 'next/link'
 
 const projects = [
   {
     title: 'Vollie Finance',
-    src: 'c2montreal.png',
+    src: 'vollie.jpg',
     color: '#000000',
+    link: 'https://website-3czo.onrender.com/',
   },
   {
     title: 'Qilo Fitness',
-    src: 'officestudio.png',
+    src: 'qilo.jpg',
     color: '#8C8C8C',
+    link: 'https://qilo.co',
   },
   {
-    title: 'Circle Finance',
-    src: 'locomotive.png',
+    title: 'Nook n Cradle',
+    src: 'nook.jpg',
     color: '#EFE8D3',
   },
   {
     title: 'Henzo Logistics',
-    src: 'silencio.png',
+    src: 'henzo.jpg',
     color: '#706D63',
+    link: 'https://henzologistics.com',
   },
 ]
 
@@ -122,9 +126,7 @@ export default function Home() {
           )
         })}
       </div>
-      <Rounded>
-        <p>More work</p>
-      </Rounded>
+
       <>
         <motion.div
           ref={modalContainer}
@@ -138,7 +140,7 @@ export default function Home() {
             className={styles.modalSlider}
           >
             {projects.map((project, index) => {
-              const { src, color } = project
+              const { src, color, link } = project
               return (
                 <div
                   className={styles.modal}
@@ -163,15 +165,22 @@ export default function Home() {
           initial='initial'
           animate={active ? 'enter' : 'closed'}
         ></motion.div>
-        <motion.div
-          ref={cursorLabel}
-          className={styles.cursorLabel}
-          variants={scaleAnimation}
-          initial='initial'
-          animate={active ? 'enter' : 'closed'}
-        >
-          View
-        </motion.div>
+        {projects.map((project) => {
+          const { link } = project
+          return (
+            <Link href={`${link}`}>
+              <motion.div
+                ref={cursorLabel}
+                className={styles.cursorLabel}
+                variants={scaleAnimation}
+                initial='initial'
+                animate={active ? 'enter' : 'closed'}
+              >
+                View
+              </motion.div>
+            </Link>
+          )
+        })}
       </>
     </main>
   )
